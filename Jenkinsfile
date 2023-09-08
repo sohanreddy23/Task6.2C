@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Build Automation Tool: Maven'
+                echo 'Build: Maven'
             }
         }
         stage('Unit and Integration Tests') {
@@ -12,72 +12,52 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    script {
-                        emailext body: 'The test stage has passed successfully.',
-                            subject: 'Test Stage Success',
-                            to: 'sohanreddy58@gmail.com',
-                            mimeType: 'text/plain',
-                            attachLog: true
-                    }
+                    mail to: 'sohanreddy58@gmail.com',
+                    subject: 'Test Stage Success',
+                    body: 'The test stage has passed successfully.'
                 }
                 failure {
-                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    script {
-                        emailext body: 'The test stage has failed.',
-                            subject: 'Test Stage Failure',
-                            to: 'sohanreddy58@gmail.com',
-                            mimeType: 'text/plain',
-                            attachLog: true
-                    }
+                    mail to: 'sohanreddy58@gmail.com',
+                    subject: 'Test Stage Failure',
+                    body: 'The test stage has failed.'
                 }
             }
         }
         stage('Code Analysis') {
             steps {
-                echo 'Code Analysis Tool: SonarQube'  
+                echo 'Your Code Analysis Tool Command'  
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Security Scan Tool: Nessus'  
+                echo 'Your Security Scan Tool Command'  
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    script {
-                        emailext body: 'The security scan stage has passed successfully.',
-                            subject: 'Security Scan Stage Success',
-                            to: 'sohanreddy58@gmail.com',
-                            mimeType: 'text/plain',
-                            attachLog: true
-                    }
+                    mail to: 'sohanreddy58@gmail.com',
+                    subject: 'Security Scan Stage Success',
+                    body: 'The security scan stage has passed successfully.'
                 }
                 failure {
-                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    script {
-                        emailext body: 'The security scan stage has failed.',
-                            subject: 'Security Scan Stage Failure',
-                            to: 'sohanreddy58@gmail.com',
-                            mimeType: 'text/plain',
-                            attachLog: true
-                    }
+                    mail to: 'sohanreddy58@gmail.com',
+                    subject: 'Security Scan Stage Failure',
+                    body: 'The security scan stage has failed.'
                 }
             }
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Staging Server: AWS EC2 instance'  
+                echo 'Your Deployment Command for Staging'  
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Your Integration Tests for Staging: Selenium'  
+                echo 'Your Integration Tests Command for Staging'  
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Production Server: AWS EC2 instance'  
+                echo 'Your Deployment Command for Production'  
             }
         }
     }
