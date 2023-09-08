@@ -13,21 +13,16 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    emailext(
-                        to: 'sohanreddy58@gmail.com',
+                    mail to: 'sohanreddy58@gmail.com',
                         subject: 'Test Stage Success',
                         body: 'The test stage has passed successfully.',
                         attachmentsPattern: '**/*.log'
-                    )
                 }
                 failure {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    emailext(
-                        to: 'sohanreddy58@gmail.com',
+                    mail to: 'sohanreddy58@gmail.com',
                         subject: 'Test Stage Failure',
-                        body: 'The test stage has failed.',
-                        attachmentsPattern: '**/*.log'
-                    )
+                        body: 'The test stage has failed.'
                 }
             }
         }
@@ -43,21 +38,16 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    emailext(
-                        to: 'sohanreddy58@gmail.com',
+                    mail to: 'sohanreddy58@gmail.com',
                         subject: 'Security Scan Stage Success',
                         body: 'The security scan stage has passed successfully.',
                         attachmentsPattern: '**/*.log'
-                    )
                 }
                 failure {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    emailext(
-                        to: 'sohanreddy58@gmail.com',
+                    mail to: 'sohanreddy58@gmail.com',
                         subject: 'Security Scan Stage Failure',
-                        body: 'The security scan stage has failed.',
-                        attachmentsPattern: '**/*.log'
-                    )
+                        body: 'The security scan stage has failed.'
                 }
             }
         }
@@ -68,14 +58,5 @@ pipeline {
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Your Integration Tests for Staging: Selenium'  
-            }
-        }
-        stage('Deploy to Production') {
-            steps {
-                echo 'Production Server: AWS EC2 instance'  
-            }
-        }
-    }
-}
+                echo 'Your Integration Tests for Staging
 
