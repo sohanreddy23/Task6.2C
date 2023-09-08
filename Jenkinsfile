@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Test Automation Tools : Selenium'  
+                echo 'Test Automation Tools : Seleniu'  
             }
             post {
                 success {
