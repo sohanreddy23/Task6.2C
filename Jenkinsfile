@@ -15,7 +15,7 @@ pipeline {
                     mail to: 'sohanreddy58@gmail.com',
                     subject: 'Test Stage Success',
                     body: 'The test stage has passed successfully.',
-                    attachmentsPattern: '**/build.log'
+                    attachmentsPattern: '**/*.log'
                 }
                 failure {
                     mail to: 'sohanreddy58@gmail.com',
@@ -38,7 +38,7 @@ pipeline {
                     mail to: 'sohanreddy58@gmail.com',
                     subject: 'Security Scan Stage Success',
                     body: 'The security scan stage has passed successfully.'
-                    attachmentsPattern: '**/build.log'
+                    attachmentsPattern: '**/*.log'
                 }
                 failure {
                     mail to: 'sohanreddy58@gmail.com',
