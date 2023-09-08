@@ -13,16 +13,23 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    mail to: 'sohanreddy58@gmail.com',
-                        subject: 'Test Stage Success',
-                        body: 'The test stage has passed successfully.',
-                        attachmentsPattern: '**/*.log'
+                    script {
+                        emailext body: 'The test stage has passed successfully.',
+                            subject: 'Test Stage Success',
+                            to: 'sohanreddy58@gmail.com',
+                            mimeType: 'text/plain',
+                            attachLog: true
+                    }
                 }
                 failure {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    mail to: 'sohanreddy58@gmail.com',
-                        subject: 'Test Stage Failure',
-                        body: 'The test stage has failed.'
+                    script {
+                        emailext body: 'The test stage has failed.',
+                            subject: 'Test Stage Failure',
+                            to: 'sohanreddy58@gmail.com',
+                            mimeType: 'text/plain',
+                            attachLog: true
+                    }
                 }
             }
         }
@@ -38,16 +45,23 @@ pipeline {
             post {
                 success {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    mail to: 'sohanreddy58@gmail.com',
-                        subject: 'Security Scan Stage Success',
-                        body: 'The security scan stage has passed successfully.',
-                        attachmentsPattern: '**/*.log'
+                    script {
+                        emailext body: 'The security scan stage has passed successfully.',
+                            subject: 'Security Scan Stage Success',
+                            to: 'sohanreddy58@gmail.com',
+                            mimeType: 'text/plain',
+                            attachLog: true
+                    }
                 }
                 failure {
                     archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
-                    mail to: 'sohanreddy58@gmail.com',
-                        subject: 'Security Scan Stage Failure',
-                        body: 'The security scan stage has failed.'
+                    script {
+                        emailext body: 'The security scan stage has failed.',
+                            subject: 'Security Scan Stage Failure',
+                            to: 'sohanreddy58@gmail.com',
+                            mimeType: 'text/plain',
+                            attachLog: true
+                    }
                 }
             }
         }
@@ -68,4 +82,3 @@ pipeline {
         }
     }
 }
-
