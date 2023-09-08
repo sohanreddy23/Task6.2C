@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install' 
+                def mavenHome = tool name: 'Maven', type: 'MavenInstallation'
+                    env.PATH = "${mavenHome}/bin:${env.PATH}"
+                    sh 'mvn clean install'
             }
         }
         stage('Unit and Integration Tests') {
