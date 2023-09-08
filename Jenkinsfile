@@ -1,9 +1,10 @@
+
 pipeline {
     agent any
     stages {
         stage('Build') {
             steps {
-                echo 'Build: Maven'
+                echo 'Build Automation Tool: Maven'
             }
         }
         stage('Unit and Integration Tests') {
@@ -14,7 +15,8 @@ pipeline {
                 success {
                     mail to: 'sohanreddy58@gmail.com',
                     subject: 'Test Stage Success',
-                    body: 'The test stage has passed successfully.'
+                    body: 'The test stage has passed successfully.',
+                    attachLog: true
                 }
                 failure {
                     mail to: 'sohanreddy58@gmail.com',
@@ -25,18 +27,19 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Your Code Analysis Tool Command'  
+                echo 'Code Analysis Tool: SonarQube'  
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Your Security Scan Tool Command'  
+                echo 'Security Scan Tool: Nessus'  
             }
             post {
                 success {
                     mail to: 'sohanreddy58@gmail.com',
                     subject: 'Security Scan Stage Success',
                     body: 'The security scan stage has passed successfully.'
+                    
                 }
                 failure {
                     mail to: 'sohanreddy58@gmail.com',
@@ -47,17 +50,17 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Your Deployment Command for Staging'  
+                echo 'Staging Server: AWS EC2 instance'  
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Your Integration Tests Command for Staging'  
+                echo 'Your Integration Tests for Staging: Selenium'  
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Your Deployment Command for Production'  
+                echo 'Production Server: AWS EC2 instance'  
             }
         }
     }
