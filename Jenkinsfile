@@ -12,7 +12,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts '**/*.log', allowEmptyArchive: true
+                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
                     emailext(
                         to: 'sohanreddy58@gmail.com',
                         subject: 'Test Stage Success',
@@ -21,7 +21,7 @@ pipeline {
                     )
                 }
                 failure {
-                    archiveArtifacts '**/*.log', allowEmptyArchive: true
+                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
                     emailext(
                         to: 'sohanreddy58@gmail.com',
                         subject: 'Test Stage Failure',
@@ -42,7 +42,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts '**/*.log', allowEmptyArchive: true
+                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
                     emailext(
                         to: 'sohanreddy58@gmail.com',
                         subject: 'Security Scan Stage Success',
@@ -51,7 +51,7 @@ pipeline {
                     )
                 }
                 failure {
-                    archiveArtifacts '**/*.log', allowEmptyArchive: true
+                    archiveArtifacts artifacts: '**/*.log', allowEmptyArchive: true
                     emailext(
                         to: 'sohanreddy58@gmail.com',
                         subject: 'Security Scan Stage Failure',
