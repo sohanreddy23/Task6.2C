@@ -58,5 +58,14 @@ pipeline {
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Your Integration Tests for Staging
+                echo 'Your Integration Tests for Staging: Selenium'  
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Production Server: AWS EC2 instance'  
+            }
+        }
+    }
+}
 
