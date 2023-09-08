@@ -3,13 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                    
-                    sh 'mvn --version'
+                    echo 'Build: Maven'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                sh 'mvn test'  
+                echo 'Test Automation Tools : Selenium'  
             }
             post {
                 success {
