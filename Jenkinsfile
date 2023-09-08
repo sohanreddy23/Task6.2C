@@ -18,50 +18,50 @@ pipeline {
                     attachLog: true,
                 }
                 failure {
-                    emailext subject: 'Test Stage Failed',
-                              body: 'The test stage has failed. Please check the build log.',
-                              attachLog: true,
-                              to: 'sohanreddy58@gmail.com'
+                   mail to:'sohanreddy58@gmail.com'
+                    subject: 'Test Stage Success',
+                    body: 'The test stage has passed successfully.',
+                    attachLog: true,
                 }
             }
         }
         stage('Code Analysis') {
             steps {
-                sh 'your-analysis-tool-command'  
+                echo 'your-analysis-tool-command'  
             }
         }
         stage('Security Scan') {
             steps {
-                sh 'your-security-scan-tool-command'  
+                echo 'your-security-scan-tool-command'  
             }
             post {
                 success {
-                    emailext subject: 'Security Scan Stage Success',
-                              body: 'The security scan stage has passed successfully.',
-                              attachLog: true,
-                              to: 'sohanreddy58@gmail.com'
+                    mail to:'sohanreddy58@gmail.com'
+                    subject: 'Test Stage Success',
+                    body: 'The test stage has passed successfully.',
+                    attachLog: true,
                 }
                 failure {
-                    emailext subject: 'Security Scan Stage Failed',
-                              body: 'The security scan stage has failed. Please check the build log.',
-                              attachLog: true,
-                              to: 'sohanreddy58@gmail.com'
+                    mail to:'sohanreddy58@gmail.com'
+                    subject: 'Test Stage Success',
+                    body: 'The test stage has passed successfully.',
+                    attachLog: true,
                 }
             }
         }
         stage('Deploy to Staging') {
             steps {
-                sh 'your-deployment-command-for-staging'  
+                echo 'your-deployment-command-for-staging'  
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                sh 'your-integration-tests-command-for-staging'  
+                echo 'your-integration-tests-command-for-staging'  
             }
         }
         stage('Deploy to Production') {
             steps {
-                sh 'your-deployment-command-for-production'  
+                echo 'your-deployment-command-for-production'  
             }
         }
     }
