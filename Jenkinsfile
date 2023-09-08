@@ -15,8 +15,7 @@ pipeline {
                 success {
                     mail to: 'sohanreddy58@gmail.com',
                     subject: 'Test Stage Success',
-                    body: 'The test stage has passed successfully.',
-                    attachLog: true
+                    body: 'The test stage has passed successfully.'
                 }
                 failure {
                     mail to: 'sohanreddy58@gmail.com',
