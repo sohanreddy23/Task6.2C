@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                    dir('/Users/sohanreddy/mav.xml')
+                    
                     sh 'mvn clean package'
             }
         }
