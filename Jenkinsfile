@@ -13,12 +13,12 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'sohanreddy58@gmail.com',
+                    emailext to: 'sohanreddy58@gmail.com',
                     subject: 'Test Stage Success',
                     body: 'The test stage has passed successfully.'
                 }
                 failure {
-                    mail to: 'sohanreddy58@gmail.com',
+                    emailext to: 'sohanreddy58@gmail.com',
                     subject: 'Test Stage Failure',
                     body: 'The test stage has failed.'
                 }
@@ -35,15 +35,11 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'sohanreddy58@gmail.com',
-                    subject: 'Security Scan Stage Success',
-                    body: 'The security scan stage has passed successfully.'
+                    emailext attachLog: true, body: 'The security scan stage has passed successfully.', subject: 'Security Scan Stage Success', to: 'Sohanreddy58@gmail.com'
                     
                 }
                 failure {
-                    mail to: 'sohanreddy58@gmail.com',
-                    subject: 'Security Scan Stage Failure',
-                    body: 'The security scan stage has failed.'
+                    emailext attachLog: true, body: 'The security scan stage has failed.', subject: 'Security Scan Stage fail', to: 'Sohanreddy58@gmail.com'
                 }
             }
         }
